@@ -17,15 +17,20 @@ Este proyecto implementa un **analizador léxico y sintáctico** sencillo en Pyt
 
 * **`arbol_sintactico.png`** - Imagen generada automáticamente con el árbol de sintaxis de la última expresión analizada.
 * **`gra.txt`** Aqui encontramos las reglas
+* **`ejemplos.txt`** Aqui podemos poner los ejemplos que queremos probar
 
 ## Gramática implementada
 
 El analizador utiliza la siguiente gramática para expresiones aritméticas:
 
 ```
-E -> E opsuma T | T
-T -> T opmul F | F  
-F -> id | num | pari E pard
+E -> E opsuma T
+E -> T
+T -> T opmul F
+T -> F
+F -> id
+F -> num
+F -> pari E pard
 ```
 
 Donde:
@@ -46,19 +51,19 @@ pip install networkx matplotlib
 
 ## Ejecución
 
-1. Crea un archivo de entrada (por ejemplo `expresion.txt`) con una expresión aritmética, por ejemplo:
+1. Crea un archivo de entrada (por ejemplo `ejemplos.txt`) con una expresión aritmética, por ejemplo:
    ```
-   8*3+4
+   2+3*4
    ```
 
 2. Ejecuta el programa:
    ```bash
-   python main.py
+   python parser_arbol.py
    ```
 
 3. Ingresa el nombre del archivo cuando lo solicite:
    ```
-   Dame el archivo: expresion.txt
+   Dame el archivo: ejemplos.txt
    ```
 
 El programa:
@@ -68,13 +73,6 @@ El programa:
 * Muestra si fue aceptada por la gramática.
 * Genera el árbol de sintaxis en `arbol_sintactico.png`.
 
-## Ejemplos de expresiones válidas
-
-* `8*3+4`
-* `x + y * 2`
-* `(a + b) * c`
-* `123 + var_name`
-* `x * (y + z) / w`
 
 ## Estructura del árbol generado
 
